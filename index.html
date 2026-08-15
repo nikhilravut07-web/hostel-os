@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HOSTEL.OS — Resident System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scanlines"></div>
+
+<section id="boot" class="boot">
+  <div class="boot-inner">
+    <div class="boot-logo">HOSTEL<span>.OS</span></div>
+    <p id="bootText">INITIALIZING RESIDENT SYSTEM...</p>
+    <div class="bar"><i id="bootBar"></i></div>
+    <div class="boot-meta"><span>BUILD 26.08</span><span>BLOCK C</span></div>
+  </div>
+</section>
+
+<div id="desktop" class="desktop hidden">
+  <header class="top">
+    <div class="brand">HOSTEL<span>.OS</span></div>
+    <div class="clock" id="clock">02:37 AM</div>
+    <div class="status"><i></i><span id="online">127</span> RESIDENTS ONLINE</div>
+  </header>
+
+  <main class="workspace">
+    <div class="welcome">
+      <div>
+        <p class="mono">SYSTEM STATUS: <b>STABLE*</b></p>
+        <h1>GOOD EVENING,<br><em>RESIDENT.</em></h1>
+        <p class="sub">Your hostel. Your chaos. One operating system.</p>
+      </div>
+      <div class="system-card">
+        <div><span>ATTENDANCE</span><b id="attendance">73%</b></div>
+        <div><span>BRAIN</span><b id="brain">12%</b></div>
+        <div><span>MESS</span><b id="mess">CLOSED</b></div>
+      </div>
+    </div>
+
+    <section class="apps">
+      <button class="app music" data-window="music"><span>01</span><strong>🎵 MUSIC.EXE</strong><small>late night soundtrack</small></button>
+      <button class="app" data-window="memes"><span>02</span><strong>😂 MEMES.EXE</strong><small>campus internet</small></button>
+      <button class="app pink" data-window="confess"><span>03</span><strong>💬 CONFESS.EXE</strong><small>anonymous corner</small></button>
+      <button class="app yellow" data-window="mess"><span>04</span><strong>🍜 MESS.EXE</strong><small>rate today's damage</small></button>
+      <button class="app" data-window="games"><span>05</span><strong>🎮 GAMES.EXE</strong><small>avoid studying</small></button>
+      <button class="app orange" data-window="events"><span>06</span><strong>📢 CAMPUS.EXE</strong><small>what's happening</small></button>
+    </section>
+
+    <section class="ticker"><span>LIVE LOG</span><b id="log">ROOM 302 ORDERED 7 MAGGIS</b></section>
+  </main>
+
+  <footer>
+    <span>HOSTEL.OS © 2026</span>
+    <button id="random">NO CONTEXT ↗</button>
+    <span>made for people who say “5 mins” and disappear for 3 hours.</span>
+  </footer>
+</div>
+
+
+
+<div id="windowLayer"></div>
+
+
+<!-- Persistent music dock: hiding MUSIC.EXE does not destroy the player. -->
+<div id="musicDock" class="music-dock hidden">
+  <button id="dockOpen" class="dock-main" title="Open MUSIC.EXE">
+    <span class="dock-icon">♪</span>
+    <span class="dock-info"><b id="dockTitle">No track loaded</b><small id="dockArtist">HOSTEL.OS MUSIC</small></span>
+  </button>
+  <button id="dockPrev" class="dock-control" title="Previous">⏮</button>
+  <button id="dockPlay" class="dock-control dock-play" title="Play/Pause">▶</button>
+  <button id="dockNext" class="dock-control" title="Next">⏭</button>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

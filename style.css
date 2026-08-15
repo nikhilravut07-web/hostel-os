@@ -1,0 +1,92 @@
+:root{--bg:#171713;--panel:#211f1a;--paper:#efe7d4;--acid:#caff39;--orange:#ff633b;--pink:#ff91c4;--yellow:#ffd64a;--line:#5a574d;--muted:#999487}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--paper);font-family:"Space Grotesk",sans-serif}body{overflow-x:hidden}
+button{font:inherit;cursor:pointer}.hidden{display:none!important}.scanlines{position:fixed;inset:0;pointer-events:none;z-index:100;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px);mix-blend-mode:screen}
+.boot{position:fixed;inset:0;background:#0d0d0b;display:grid;place-items:center;z-index:50}.boot-inner{width:min(620px,84vw);font-family:"DM Mono";color:#dce4c6}.boot-logo{font:700 clamp(3rem,9vw,7rem) "Space Grotesk";letter-spacing:-.09em;color:var(--paper)}.boot-logo span{color:var(--acid)}.boot p{font-size:.75rem;margin:30px 0 10px;color:#9fa78d}.bar{height:6px;border:1px solid #646957}.bar i{display:block;width:0;height:100%;background:var(--acid);transition:width .1s}.boot-meta{display:flex;justify-content:space-between;color:#666b5c;font-size:.65rem;margin-top:10px}
+.desktop{min-height:100vh;background:radial-gradient(circle at 78% 12%,#343329 0,#171713 35%),var(--bg)}.top{height:68px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 4vw;font:500 .7rem "DM Mono";position:sticky;top:0;background:rgba(23,23,19,.82);backdrop-filter:blur(12px);z-index:10}.brand{font:700 1.2rem "Space Grotesk";letter-spacing:-.06em}.brand span{color:var(--acid)}.status i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#5dff73;margin-right:7px}.clock{color:var(--acid)}
+.workspace{padding:7vh 5vw 40px}.welcome{display:flex;justify-content:space-between;gap:40px;align-items:end}.mono{font:500 .68rem "DM Mono";color:var(--muted)}.mono b{color:var(--acid)}h1{font-size:clamp(3.4rem,8vw,8rem);line-height:.77;letter-spacing:-.09em;margin:25px 0}.welcome em{font-style:normal;color:var(--orange)}.sub{color:var(--muted)}.system-card{min-width:280px;border:1px solid var(--line);padding:20px;background:#1b1a16}.system-card div{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid #38362f;font:500 .65rem "DM Mono"}.system-card div:last-child{border:0}.system-card b{color:var(--acid)}
+.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:60px}.app{min-height:180px;text-align:left;color:var(--paper);background:#211f1a;border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s}.app:hover{transform:translate(-4px,-4px);border-color:var(--acid);box-shadow:7px 7px 0 var(--acid)}.app span{font:10px "DM Mono";color:var(--muted)}.app strong{font-size:1.45rem;letter-spacing:-.05em}.app small{font:10px "DM Mono";color:#8f8a7d}.app.music{background:var(--acid);color:#16160f}.app.pink{background:var(--pink);color:#20171c}.app.yellow{background:var(--yellow);color:#201b0c}.app.orange{background:var(--orange);color:#20120d}
+.ticker{margin-top:18px;border:1px solid var(--line);padding:14px 16px;display:flex;gap:25px;font:10px "DM Mono"}.ticker span{color:var(--acid)}.ticker b{font-weight:400;color:#bbb5a8}
+footer{border-top:1px solid var(--line);padding:22px 5vw;display:flex;justify-content:space-between;gap:20px;color:#777267;font:9px "DM Mono"}footer button{background:none;color:var(--acid);border:0;font:inherit}
+.win{position:fixed;z-index:30;width:min(620px,calc(100vw - 30px));max-height:78vh;overflow:auto;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--paper);color:#171713;border:2px solid #171713;box-shadow:14px 14px 0 #080808}.winbar{height:45px;background:#171713;color:var(--paper);display:flex;align-items:center;justify-content:space-between;padding:0 14px;font:10px "DM Mono";cursor:grab}.close{border:1px solid #888;background:none;color:white;width:24px;height:24px}.winbody{padding:28px}.win h2{font-size:3rem;letter-spacing:-.08em;margin:0 0 20px}.win p{color:#655f55;line-height:1.6}.win .tag{font:10px "DM Mono";color:#666}.poll{display:grid;gap:8px}.poll button,.action{padding:13px;border:1px solid #171713;background:#e0d5bf;text-align:left}.poll button:hover{background:var(--acid)}textarea{width:100%;min-height:120px;padding:12px;border:1px solid #171713;background:#f7efdf;font:14px "Space Grotesk"}.send{margin-top:10px;background:#171713;color:white;border:0;padding:13px 16px}.yt{aspect-ratio:16/9;width:100%;border:0;background:#111}.game{border:2px solid #171713;padding:25px;text-align:center;background:#caff39}.game h3{font-size:2.4rem;margin:5px}.meter{height:15px;border:1px solid #171713;margin:18px 0}.meter i{display:block;width:40%;height:100%;background:#ff633b}.toast{position:fixed;right:20px;bottom:20px;background:#caff39;color:#171713;padding:14px 18px;z-index:60;font:11px "DM Mono";transform:translateY(100px);transition:.25s}.toast.show{transform:none}
+@media(max-width:800px){.top{padding:0 18px}.status{display:none}.workspace{padding:55px 20px 30px}.welcome{display:block}.system-card{margin-top:35px}.apps{grid-template-columns:1fr 1fr;margin-top:40px}.app{min-height:150px;padding:17px}.app strong{font-size:1.1rem}.ticker{display:block;line-height:2}.ticker b{display:block}footer{padding:20px;display:block;line-height:2.2}}
+@media(max-width:500px){.apps{grid-template-columns:1fr}.boot-logo{font-size:3.2rem}}
+
+.conf-item{border-top:1px solid #aaa;margin-top:14px;padding-top:14px}.conf-item small{font:9px "DM Mono";color:#777}.conf-item p{margin:7px 0!important;color:#171713!important}.conf-meta{font:9px "DM Mono";color:#777}.empty{margin-top:18px;padding:18px;background:#e0d5bf;font:10px "DM Mono";line-height:1.8}
+
+.music-dock{position:fixed;z-index:45;right:22px;bottom:22px;width:min(390px,calc(100vw - 30px));display:flex;align-items:center;gap:7px;padding:8px;background:#171713;color:#efe7d4;border:1px solid #777164;box-shadow:8px 8px 0 #080808}.music-dock.hidden{display:none}.dock-main{min-width:0;flex:1;background:none;color:#efe7d4;border:0;display:flex;align-items:center;text-align:left;gap:10px;padding:5px}.dock-icon{width:34px;height:34px;display:grid;place-items:center;background:#caff39;color:#171713;font-size:20px}.dock-info{min-width:0;display:flex;flex-direction:column;gap:3px}.dock-info b,.dock-info small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dock-info b{font-size:12px}.dock-info small{font:9px "DM Mono";color:#999487}.dock-control{width:34px;height:34px;border:1px solid #5a574d;background:#211f1a;color:#efe7d4}.dock-control:hover{background:#caff39;color:#171713}.dock-play{background:#efe7d4;color:#171713}.music-win .winbody{padding-bottom:18px}
+@media(max-width:500px){.music-dock{right:10px;bottom:10px;width:calc(100vw - 20px)}.dock-info b{max-width:130px}}
+
+/* V5 persistent YouTube player */
+.persistent-player{position:fixed;left:-10000px;top:-10000px;width:560px;height:315px;opacity:0;pointer-events:none}
+.persistent-player iframe{width:100%;height:100%;border:0}
+
+/* V6 interaction fix */
+.desktop{position:relative;z-index:1;pointer-events:auto}
+.workspace,.apps,.app,.top,footer{pointer-events:auto}
+.app{position:relative;z-index:2}
+#windowLayer{position:relative;z-index:200}
+.win{pointer-events:auto}
+.music-dock{pointer-events:auto}
+
+.music-frame-holder{width:100%;aspect-ratio:16/9;background:#111;border:1px solid #171713;overflow:hidden;margin-top:18px}
+.music-frame-holder iframe{width:100%;height:100%;border:0}
+
+/* V7 MUSIC.EXE */
+.music-win{width:min(720px,calc(100vw - 30px))}
+.music-frame-holder{width:100%;aspect-ratio:16/9;background:#111;border:1px solid #171713;overflow:hidden;margin-top:18px}
+.music-frame-holder iframe{width:100%;height:100%;border:0}
+.music-title-row{display:flex;justify-content:space-between;align-items:center;gap:15px}
+.music-min{background:none;color:#efe7d4;border:1px solid #777164;width:26px;height:26px}
+.music-mini{
+  position:fixed!important;left:auto!important;top:auto!important;right:22px!important;bottom:22px!important;
+  width:min(390px,calc(100vw - 30px))!important;height:auto!important;transform:none!important;
+  max-height:none!important;overflow:hidden!important;box-shadow:8px 8px 0 #080808!important;
+}
+.music-mini .winbar{height:42px}
+.music-mini .winbody{display:none}
+.music-mini .winbar span:after{content:"  •  PLAYING";color:#caff39}
+@media(max-width:500px){.music-mini{right:10px!important;bottom:10px!important;width:calc(100vw - 20px)!important}}
+
+.music-win{width:min(760px,calc(100vw - 30px))}
+.music-frame-holder{width:100%;aspect-ratio:16/9;background:#111;border:1px solid #171713;overflow:hidden;margin-top:18px}
+.music-frame-holder iframe{width:100%;height:100%;border:0}
+.music-mini{left:auto!important;top:auto!important;right:22px!important;bottom:22px!important;width:360px!important;height:auto!important;transform:none!important;max-height:none!important;overflow:hidden!important;box-shadow:8px 8px 0 #080808!important}
+.music-mini .winbody{display:none}
+.music-mini .winbar{height:42px}
+@media(max-width:500px){.music-mini{right:10px!important;bottom:10px!important;width:calc(100vw - 20px)!important}}
+
+a.send{display:inline-block;text-decoration:none;cursor:pointer}
+
+/* V10 Spotify */
+.music-win{width:min(760px,calc(100vw - 30px))}
+.spotify-frame{width:100%;margin-top:18px;background:#111;overflow:hidden;border:1px solid #171713}
+.spotify-frame iframe{display:block;width:100%;height:352px;border:0}
+.track-list{margin-top:16px;display:grid;gap:6px}
+.track-row{display:grid;grid-template-columns:35px 1fr auto;gap:10px;align-items:center;text-align:left;padding:11px 12px;background:#e0d5bf;color:#171713;border:1px solid #aaa}
+.track-row b{font-size:13px}.track-row small{font:9px "DM Mono";color:#665f55}.track-row.active{background:#caff39}.track-row:hover{background:#caff39}
+.music-mini{left:auto!important;top:auto!important;right:22px!important;bottom:22px!important;width:360px!important;height:auto!important;transform:none!important;max-height:none!important;overflow:hidden!important;box-shadow:8px 8px 0 #080808!important}
+.music-mini .winbody{display:none}.music-mini .winbar{height:42px}
+@media(max-width:500px){.music-mini{right:10px!important;bottom:10px!important;width:calc(100vw - 20px)!important}}
+
+/* V11 MEMES.EXE */
+.meme-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px}
+.meme-tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 12px}
+.meme-tab{border:1px solid #777164;background:#e0d5bf;color:#171713;padding:9px 12px;font:10px "DM Mono";cursor:pointer}
+.meme-tab.active,.meme-tab:hover{background:#caff39}
+.meme-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}
+.meme-card{border:1px solid #777164;background:#eee5d2;overflow:hidden;box-shadow:4px 4px 0 #111}
+.meme-image-wrap{background:#171717;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.meme-image-wrap img{width:100%;height:100%;object-fit:contain}
+.meme-card-body{padding:12px}
+.meme-source{font:8px "DM Mono";letter-spacing:.5px;opacity:.7}
+.meme-card h3{font-size:16px;line-height:1.05;margin:7px 0}
+.meme-caption{font-size:12px;line-height:1.35;margin:8px 0 12px}
+.meme-link{font:9px "DM Mono";color:#111;text-decoration:underline}
+.meme-loading{grid-column:1/-1;padding:50px 15px;text-align:center;border:1px dashed #777164;font:12px "DM Mono"}
+.meme-loading small{font-size:10px}
+@media(max-width:700px){.meme-grid{grid-template-columns:1fr}.meme-head{flex-direction:column}}
+
+.meme-debug{white-space:pre-wrap;word-break:break-word;text-align:left;font:9px "DM Mono";max-height:220px;overflow:auto;margin:0;padding:10px;background:#171717;color:#caff39}
+
+.meme-card-body h3{min-height:34px}
+.meme-source{letter-spacing:.7px}

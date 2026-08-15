@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/memes.js": {
+      "maxDuration": 10
+    }
+  }
+}

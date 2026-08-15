@@ -1,26 +1,14 @@
-# HOSTEL.OS V16 — Imgflip Feed + Vercel Proxy
+# HOSTEL.OS V17 — Meme Feed Fixed
 
-V15 failed because the browser was trying to call Imgflip directly. Some browsers/deployments block that cross-origin request (CORS), so the UI only saw a generic "feed failed".
+V17 fixes the frontend error in V16.
 
-V16 fixes the architecture:
-
-Browser
-  -> /api/memes on the same HOSTEL.OS domain
-  -> Vercel serverless function
-  -> Imgflip API
-  -> JSON back to HOSTEL.OS
-
-The browser no longer calls api.imgflip.com directly.
-
-The official Imgflip `/get_memes` endpoint is free and returns popular user-uploaded meme templates. See https://imgflip.com/api.
+The Vercel API was confirmed to return `ok:true`, so the backend and Imgflip connection were working. The frontend was failing while rendering the returned meme cards because `escapeHtml()` was referenced but was never defined. V17 adds that missing helper.
 
 Deployment:
-1. Replace the entire project with this V16.
-2. Deploy the folder containing `index.html`, `script.js`, `style.css`, `api/memes.js`, and `vercel.json`.
-3. In Vercel, make sure the project Root Directory is this folder.
-4. Open HOSTEL.OS and click MEMES.EXE.
+- Replace the project files with V17.
+- Push/commit to GitHub.
+- Vercel should automatically redeploy.
+- Open the Vercel URL and hard refresh with Ctrl+Shift+R.
+- Open MEMES.EXE.
 
-If the API still fails, open:
-https://YOUR-DOMAIN.vercel.app/api/memes
-
-You should see JSON beginning with `{"ok":true,...}`.
+The `/api/memes` Vercel proxy remains unchanged.

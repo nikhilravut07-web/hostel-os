@@ -57,6 +57,12 @@ function openConfess(){
  const input=el.querySelector("#confText");input.oninput=()=>el.querySelector("#chars").textContent=input.value.length+"/180";
  el.querySelector("#sendConf").onclick=()=>{const t=input.value.trim();if(t.length<3){el.querySelector("#confStatus").textContent="Write at least 3 characters 😭";return}const p=getPosts();p.push({text:t,time:new Date().toLocaleString("en-IN",{dateStyle:"medium",timeStyle:"short"}),reactions:0});savePosts(p.slice(-30));input.value="";el.querySelector("#chars").textContent="0/180";el.querySelector("#confStatus").textContent="Posted anonymously on this browser. 🫡";el.querySelector("#confList").innerHTML=listPosts()}
 }
+function escapeHtml(value){
+ const div=document.createElement("div");
+ div.textContent=String(value ?? "");
+ return div.innerHTML;
+}
+
 let memeFeedCache={};
 
 const indiaCaptions=[

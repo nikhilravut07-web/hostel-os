@@ -1,14 +1,5 @@
-# HOSTEL.OS V17 — Meme Feed Fixed
+V19 — India Internet Trend Radar.
 
-V17 fixes the frontend error in V16.
+MEMES.EXE now uses Vercel /api/trends.js. It queries Google News RSS for current Indian meme/Instagram/Gen-Z signals, fetches source article og:image thumbnails, and links to original sources. It has a Ravi Kishan filter. It does not scrape or rehost Instagram.
 
-The Vercel API was confirmed to return `ok:true`, so the backend and Imgflip connection were working. The frontend was failing while rendering the returned meme cards because `escapeHtml()` was referenced but was never defined. V17 adds that missing helper.
-
-Deployment:
-- Replace the project files with V17.
-- Push/commit to GitHub.
-- Vercel should automatically redeploy.
-- Open the Vercel URL and hard refresh with Ctrl+Shift+R.
-- Open MEMES.EXE.
-
-The `/api/memes` Vercel proxy remains unchanged.
+Vercel is required. Keep api/trends.js at repository root. No API key is required.

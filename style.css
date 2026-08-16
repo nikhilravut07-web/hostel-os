@@ -90,3 +90,4 @@ a.send{display:inline-block;text-decoration:none;cursor:pointer}
 
 .meme-card-body h3{min-height:34px}
 .meme-source{letter-spacing:.7px}
+.trend-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.trend-card{border:1px solid #777164;background:#eee5d2;overflow:hidden;box-shadow:4px 4px 0 #111}.trend-img{aspect-ratio:16/9;background:#171717;display:flex;align-items:center;justify-content:center;font-size:40px;overflow:hidden}.trend-img img{width:100%;height:100%;object-fit:cover}.trend-body{padding:13px}.trend-body h3{font-size:16px;line-height:1.1}.trend-body p{font-size:12px;line-height:1.4}.trend-meta{font:8px "DM Mono";opacity:.65}@media(max-width:700px){.trend-grid{grid-template-columns:1fr}}

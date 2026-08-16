@@ -64,9 +64,56 @@ function escapeHtml(value){
 }
 
 function escapeHtml(v){const d=document.createElement("div");d.textContent=String(v??"");return d.innerHTML}
-function trendCard(x){return `<article class="trend-card"><div class="trend-img">${x.image?`<img src="${escapeHtml(x.image)}" loading="lazy" onerror="this.style.display='none'">`:"🔥"}</div><div class="trend-body"><div class="meme-source">🔥 TREND SIGNAL · ${escapeHtml(x.query)}</div><h3>${escapeHtml(x.title)}</h3><p>${escapeHtml(x.why)}</p><div class="trend-meta">${escapeHtml(x.published||"RECENT")}</div><a class="meme-link" href="${escapeHtml(x.link)}" target="_blank" rel="noopener">OPEN SOURCE ↗</a></div></article>`}
-async function loadTrends(el,term=""){const g=el.querySelector("#trendGrid"),st=el.querySelector("#trendStatus");st.textContent="SCANNING INDIAN INTERNET...";g.innerHTML='<div class="meme-loading">🔥 TREND RADAR...</div>';try{const r=await fetch(`/api/trends?t=${Date.now()}`,{cache:"no-store"}),d=await r.json();if(!r.ok||!d.ok)throw Error(d.error||`HTTP ${r.status}`);let a=d.trends||[];if(term)a=a.filter(x=>x.title.toLowerCase().includes(term.toLowerCase()));g.innerHTML=a.map(trendCard).join("")||'<div class="meme-loading">NO SIGNALS RIGHT NOW 😭</div>';st.textContent=`LIVE TREND RADAR · ${a.length} SIGNALS`}catch(err){st.textContent="TREND RADAR ERROR";g.innerHTML=`<div class="meme-loading">${escapeHtml(err.message)}<br><br><button class="send" id="retryTrends">↻ TRY AGAIN</button></div>`;el.querySelector("#retryTrends")?.addEventListener("click",()=>loadTrends(el,term))}}
-function openMemes(){const el=makeWin("MEMES.EXE",`<div class="meme-head"><div><span class="tag">INDIA INTERNET TREND RADAR</span><h2>WHAT'S<br><em>COOKING.</em></h2></div><button class="send" id="refreshTrends">↻ REFRESH</button></div><div class="meme-tabs"><button class="meme-tab active" id="allTrends">🔥 TRENDING NOW</button><button class="meme-tab" id="raviOnly">🗿 RAVI KISHAN</button></div><p id="trendStatus" class="tag">LOADING...</p><div id="trendGrid" class="trend-grid"></div><p class="tag" style="margin-top:15px">Public trend signals + source links. HOSTEL.OS does not scrape or rehost Instagram posts.</p>`);el.querySelector("#refreshTrends").onclick=()=>loadTrends(el);el.querySelector("#allTrends").onclick=()=>loadTrends(el);el.querySelector("#raviOnly").onclick=()=>loadTrends(el,"ravi kishan");loadTrends(el)}
+function trendCard(x,i){
+  return `<article class="trend-card">
+    <div class="trend-img">${x.image?`<img src="${escapeHtml(x.image)}" loading="lazy" onerror="this.parentElement.innerHTML='<span>🔥</span>'">`:`<span>🔥</span>`}</div>
+    <div class="trend-body">
+      <div class="meme-source">🔥 ${escapeHtml(x.community)} · ${escapeHtml(x.age)}</div>
+      <h3>${escapeHtml(x.title)}</h3>
+      <p>${escapeHtml(x.why)}</p>
+      <div class="trend-stats">▲ ${Number(x.ups||0).toLocaleString("en-IN")} · 💬 ${Number(x.comments||0).toLocaleString("en-IN")}</div>
+      <a class="meme-link" href="${escapeHtml(x.link)}" target="_blank" rel="noopener">OPEN ORIGINAL ↗</a>
+    </div>
+  </article>`
+}
+async function fetchTrends(el,term=""){
+  const grid=el.querySelector("#trendGrid"),status=el.querySelector("#trendStatus");
+  status.textContent="SCANNING INDIAN MEME COMMUNITIES...";
+  grid.innerHTML='<div class="meme-loading">🔥 FINDING WHAT INDIA IS ACTUALLY MEMEING<br><span>NOT GENERIC TEMPLATES.</span></div>';
+  try{
+    const r=await fetch(`/api/trends?t=${Date.now()}`,{cache:"no-store"});
+    const d=await r.json();
+    if(!r.ok||!d.ok)throw Error(d.error||`HTTP ${r.status}`);
+    let a=d.trends||[];
+    if(term)a=a.filter(x=>x.title.toLowerCase().includes(term.toLowerCase()));
+    if(!a.length)throw Error(term?`No current ${term} posts found.`:"No current meme posts found.");
+    grid.innerHTML=a.map(trendCard).join("");
+    status.textContent=`LIVE INDIA MEMES · ${a.length} POSTS · UPDATED JUST NOW`;
+  }catch(e){
+    status.textContent="TREND RADAR ERROR";
+    grid.innerHTML=`<div class="meme-loading"><b>MEME RADAR FUMBLED 😭</b><br><br>${escapeHtml(e.message)}<br><br><button class="send" id="retryTrends">↻ TRY AGAIN</button></div>`;
+    el.querySelector("#retryTrends")?.addEventListener("click",()=>fetchTrends(el,term));
+  }
+}
+function openMemes(){
+  const el=makeWin("MEMES.EXE",`
+    <div class="meme-head">
+      <div><span class="tag">LIVE INDIAN MEME RADAR</span><h2>WHAT'S<br><em>COOKING.</em></h2></div>
+      <button class="send" id="refreshTrends">↻ REFRESH</button>
+    </div>
+    <div class="meme-tabs">
+      <button class="meme-tab active" id="allTrends">🔥 INDIA NOW</button>
+      <button class="meme-tab" id="raviOnly">🗿 RAVI KISHAN</button>
+    </div>
+    <p id="trendStatus" class="tag">LOADING...</p>
+    <div id="trendGrid" class="trend-grid"></div>
+    <p class="tag" style="margin-top:15px">Ranked from current Indian meme-community posts by freshness + engagement. Open ORIGINAL to view the source post.</p>
+  `);
+  el.querySelector("#refreshTrends").onclick=()=>fetchTrends(el);
+  el.querySelector("#allTrends").onclick=()=>fetchTrends(el);
+  el.querySelector("#raviOnly").onclick=()=>fetchTrends(el,"ravi kishan");
+  fetchTrends(el);
+}
 
 function openApp(type){
  if(type==="music"){openMusic();return}

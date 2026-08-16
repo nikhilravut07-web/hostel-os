@@ -88,7 +88,7 @@ async function fetchTrends(el,term=""){
     if(term)a=a.filter(x=>x.title.toLowerCase().includes(term.toLowerCase()));
     if(!a.length)throw Error(term?`No current ${term} posts found.`:"No current meme posts found.");
     grid.innerHTML=a.map(trendCard).join("");
-    status.textContent=`LIVE INDIA MEMES · ${a.length} POSTS · UPDATED JUST NOW`;
+    status.textContent=`LIVE INDIA MEMES · ${a.length} POSTS · REDDIT RSS · UPDATED JUST NOW`;
   }catch(e){
     status.textContent="TREND RADAR ERROR";
     grid.innerHTML=`<div class="meme-loading"><b>MEME RADAR FUMBLED 😭</b><br><br>${escapeHtml(e.message)}<br><br><button class="send" id="retryTrends">↻ TRY AGAIN</button></div>`;
